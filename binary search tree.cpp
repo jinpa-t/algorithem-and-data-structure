@@ -18,9 +18,9 @@ node * insert(node* root, int key){
     if(root == nullptr)
         root = new node(key);
     else if(key < root->element)
-        insert(root->left, key);
+        root->left = insert(root->left, key);
     else if(key > root->element)
-        insert(root->right, key);
+        root->right = insert(root->right, key);
     else
     ;
     return root;
