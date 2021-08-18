@@ -1,29 +1,37 @@
 #include <iostream>
+#include <vector>
 using namespace std;
 
-void sort_array(int passed_Array[], int passed_size){
-  int temp, i , j ;
-  for (i = 0; i < passed_size; i++){
-    for (j = 0; j < passed_size; j++) {
-      if(passed_Array[i] < passed_Array[j])
-      {
-        temp = passed_Array[i];
-        passed_Array[i] = passed_Array[j];
-        passed_Array[j] = temp;
-      }
-      
+void displayVector(const vector<int> & vec) {
+    for(int i=0 ; i< vec.size(); i++){
+         cout <<  vec[i] << " ";
     }
-    
-  }
-  for(i = 0; i < passed_size; i++)
-  {
-      cout << passed_Array[i] << " ";
-  }
-  
+    cout << endl;
 }
-int main() {
-  int myArray[24] = {2,32,434,243,243,44,2,324,34,24,343,43,4,3,34,3,45,25,55,25,77,65,55,445};
-  int array_size =  sizeof(myArray)/sizeof(myArray[0]);
-  sort_array(myArray, array_size); //passing array to function 
-  return 0;
+
+void insertionSort(vector<int> & vec) {
+    // insert code here
+    int i, temp, j; 
+   for (i = 1; i < vec.size(); i++)
+   { 
+       temp = vec[i];
+       for (j = i; j > 0 && temp < vec[j-1]; j--) 
+       { 
+           vec[j] = vec[j-1];
+       }
+       vec[j] = temp;
+       cout << "Pass " << i << ":";
+       displayVector(vec);
+   }
+   cout <<endl;
+}
+
+int main(int argc, const char * argv[]) {
+    vector<int> myVec {90, 80, 70, 60, 50, 40, 30, 20, 10, 0};
+    insertionSort(myVec);
+    
+    cout << "My sorted vector is : "<< endl;
+    displayVector(myVec);
+
+    return 0;
 }
