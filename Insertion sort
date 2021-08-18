@@ -10,7 +10,6 @@ void displayVector(const vector<int> & vec) {
 }
 
 void insertionSort(vector<int> & vec) {
-    // insert code here
     int i, temp, j; 
    for (i = 1; i < vec.size(); i++)
    { 
