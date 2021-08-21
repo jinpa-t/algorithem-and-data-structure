@@ -32,14 +32,14 @@ void pop(){
 void showTop(){
 	if (isempty())
 		cout << "Stack is empty";
-		else 
+	else 
 		cout <<"Element at top is " << top->data;
-	
+
 }
 int main(){
 	push(1);
 	push(2);
 	pop();
-  showTop();
+  	showTop();
 	return 0;
 }
