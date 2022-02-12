@@ -1,6 +1,5 @@
 #include <iostream>
 #include <vector>
-using namespace std;
 
 struct node{
     int element;
@@ -14,49 +13,50 @@ struct node{
 };
 
 node * insert(node* root, int key){
-    
     if(root == nullptr)
         root = new node(key);
     else if(key < root->element)
         root->left = insert(root->left, key);
     else if(key > root->element)
         root->right = insert(root->right, key);
-    else
-    ;
     return root;
 }
 
 bool Bfind(node* root, int key){
-    
     if(root == nullptr)
         return false;
     if(root->element == key)
         return true;
     else if(key < root->element)
-        Bfind(root->left, key);
+        return Bfind(root->left, key);
     else if(key > root->element)
-        Bfind(root->right, key);
-    else
-        return false;
+        return Bfind(root->right, key);
+    return false;
+}
+void display(node* root){
+    if(root == nullptr) return;
+    std::cout << root->element << " ";
+    display(root->left);
+    display(root->right);
 }
 
-
 int main(int argc, const char * argv[]) {
-    vector<int> myVec {77,200,99,57,69,45,101,67,120,132,87,157,170,12};
+    std::vector<int> myVec {77,200,99,57,69,45,101,67,120,132,87,157,170,12};
        
     //insert to tree
     node * root = new node(myVec[0]);
     for (int i = 1; i < myVec.size(); i++) {
         insert(root,myVec[i]);
     }
+    display(root);
     //user input
     int userInput;
-    cout << "Enter the number that you would like to find : " << endl;
-    cin>> userInput;
+    std::cout << "Enter the number that you would like to find : " << "\n";
+    std::cin>> userInput;
     if (Bfind(root, userInput))
-        cout << "The number " << userInput << " found" << endl;
+        std::cout << "The number " << userInput << " found" << "\n";
     else
-        cout << "The number " << userInput << " not found" << endl;
+        std::cout << "The number " << userInput << " not found" << "\n";
     
     return 0;
         
