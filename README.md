@@ -14,4 +14,3 @@ Data structures
 * Stack implementation
 * Queue implementaion
 * Binary Search Tree(BST)
-* 
